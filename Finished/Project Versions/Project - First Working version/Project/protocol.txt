@@ -1,0 +1,17 @@
+note over Client,Server:Protocol:\n\n1)\n sends a message that has a known length of 16 (contains data length and padded with spaces to reach length 16).\n\n2)\n sends the data in this format: \n\ncmd + "#@?#" + [fields] + "#@?#" + [data_of_fields]\n\n(each fields and data_of_fields is also separated by "#@?#")
+
+Client->Server:len_msg.ljust(16)
+Client->Server:cmd#@?#field#@?#data_of_field
+Server->Client:len_msg.ljust(16)
+Server->Client:cmd#@?#field#@?#data_of_field
+
+note over Client,Server:example for login
+Client->Server:"48              "
+Client->Server:"login#@?#2#@?#user_name#@?#password#@?#Omer#@?#1"
+Server->Client:"87              "
+Server->Client:"3#@?#login_status#@?#user_name#@?#status_data#@?#True#@?#Omer#@?#Logged In Successfully"
+note over Client,Server:example for first sync
+Client->Server:"52              "
+Client->Server:"sync#@?#2#@?#user_name#@?#first_time#@?#Omer#@?#True"
+Server->Client:"740             "
+Server->Client:"2#@?#Eytan.txt#@?#connected_users.txt#data of the file Eytan.txt#@?#data of the file connected_users.txt"

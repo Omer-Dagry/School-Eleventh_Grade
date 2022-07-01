@@ -1,0 +1,31 @@
+INFO | 2021-11-12 12:16:00,412 | MainProcess |     Connected to server.
+DEBUG | 2021-11-12 12:16:06,997 | MainProcess |     [Client]: 'dir#0'
+DEBUG | 2021-11-12 12:16:06,998 | MainProcess |     [Client]: 'dir: '
+DEBUG | 2021-11-12 12:16:06,998 | MainProcess |     [Server]: 'dir             #17              '
+DEBUG | 2021-11-12 12:16:06,998 | MainProcess |     [Server]: dir: the files in specified dir
+INFO | 2021-11-12 12:17:30,682 | MainProcess |     Connected to server.
+DEBUG | 2021-11-12 12:17:34,802 | MainProcess |     [Client]: 'dir#0'
+DEBUG | 2021-11-12 12:17:34,802 | MainProcess |     [Client]: 'dir: '
+DEBUG | 2021-11-12 12:17:34,803 | MainProcess |     [Server]: 'dir             #17              '
+DEBUG | 2021-11-12 12:17:34,803 | MainProcess |     [Server]: dir: the files in specified dir
+WARNING | 2021-11-12 12:18:52,317 | MainProcess |    Error: [WinError 10061] No connection could be made because the target machine actively refused it
+INFO | 2021-11-12 12:23:19,929 | MainProcess |     Connected to server.
+INFO | 2021-11-12 12:23:29,755 | MainProcess |     Connected to server.
+DEBUG | 2021-11-12 12:23:32,799 | MainProcess |     [Client]: 'dir#0'
+DEBUG | 2021-11-12 12:23:32,799 | MainProcess |     [Client]: 'dir: '
+DEBUG | 2021-11-12 12:23:32,799 | MainProcess |     [Server]: 'dir             #17              '
+DEBUG | 2021-11-12 12:23:32,799 | MainProcess |     [Server]: dir: the files in specified dir
+WARNING | 2021-12-24 22:49:11,208 | MainProcess |    Error: [WinError 10061] No connection could be made because the target machine actively refused it
+INFO | 2021-12-24 22:50:22,744 | MainProcess |     Connected to server.
+DEBUG | 2021-12-24 22:50:31,971 | MainProcess |     [Client]: 'take_screenshot#0'
+DEBUG | 2021-12-24 22:50:31,971 | MainProcess |     [Client]: 'take_screenshot: '
+DEBUG | 2021-12-24 22:50:32,005 | MainProcess |     [Server]: 'take_screenshot #16              '
+DEBUG | 2021-12-24 22:50:32,005 | MainProcess |     [Server]: take_screenshot: Screenshot taken
+DEBUG | 2021-12-24 22:50:39,371 | MainProcess |     [Client]: 'send_photo#0'
+DEBUG | 2021-12-24 22:50:39,371 | MainProcess |     [Client]: 'send_photo: '
+DEBUG | 2021-12-24 22:50:39,382 | MainProcess |     [Server]: 'send_photo      #85525           '
+DEBUG | 2021-12-24 22:50:39,382 | MainProcess |     [Server]: send_photo: photo bytes
+DEBUG | 2021-12-24 22:50:50,163 | MainProcess |     [Client]: 'exit#0'
+DEBUG | 2021-12-24 22:50:50,163 | MainProcess |     [Client]: 'exit: '
+DEBUG | 2021-12-24 22:50:50,163 | MainProcess |     [Server]: 'exit            #20              '
+DEBUG | 2021-12-24 22:50:50,163 | MainProcess |     [Server]: exit: Ending connection...

@@ -1,0 +1,24 @@
+INFO | 2021-12-31 09:22:45,781 | MainProcess | I am the client
+INFO | 2021-12-31 09:22:45,783 | MainProcess |     Connected to server.
+INFO | 2021-12-31 09:22:45,784 | MainProcess |     [Client]: GET /randevus?id=215200908 HTTP/1.1
+Authorization: darth-vader
+
+
+DEBUG | 2021-12-31 09:22:45,785 | MainProcess |     [Server]: HTTP/1.1 200 OK
+Content-type: text/plain
+Content-length: 5
+
+
+DEBUG | 2021-12-31 09:22:45,785 | MainProcess |     [Server]: 16019
+INFO | 2021-12-31 09:22:45,785 | MainProcess | I am the server
+INFO | 2021-12-31 09:22:45,785 | MainProcess |     Server is up and waiting for client.
+INFO | 2021-12-31 09:22:47,786 | MainProcess |     Client connected. IP: ('172.16.9.156', 49473)
+DEBUG | 2021-12-31 09:22:47,788 | MainProcess |     [Client]: JEDI Knight #6
+
+hurry to class Yud-Alef 2 and join your fellow JEDIs in their war against the empire.
+
+Don't forget your number!
+
+May the force be with you!
+INFO | 2022-01-07 10:42:35,591 | MainProcess | I am the client
+INFO | 2022-01-07 10:42:49,685 | MainProcess | I am the client

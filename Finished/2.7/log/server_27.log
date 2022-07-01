@@ -1,0 +1,48 @@
+INFO | 2021-11-12 12:15:59,165 | MainProcess |     Server is up and waiting for client.
+INFO | 2021-11-12 12:16:00,412 | MainProcess |     Client connected. IP: ('127.0.0.1', 60673)
+DEBUG | 2021-11-12 12:16:06,997 | MainProcess |     [Client]: 'dir             #0               '
+DEBUG | 2021-11-12 12:16:06,998 | MainProcess |     [Client]: ''
+DEBUG | 2021-11-12 12:16:06,998 | MainProcess |     [Server]: 'dir#17'
+DEBUG | 2021-11-12 12:16:06,998 | MainProcess |     [Server]: 'dir: the files in specified dir'
+WARNING | 2021-11-12 12:16:13,479 | MainProcess |     Lost connection with client.
+INFO | 2021-11-12 12:16:13,479 | MainProcess |     Client Disconnected.
+WARNING | 2021-11-12 12:16:13,480 | MainProcess |        Socket error: [WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO | 2021-11-12 12:17:28,125 | MainProcess |     Server is up and waiting for client.
+INFO | 2021-11-12 12:17:30,682 | MainProcess |     Client connected. IP: ('127.0.0.1', 60703)
+DEBUG | 2021-11-12 12:17:34,802 | MainProcess |     [Client]: 'dir             #0               '
+DEBUG | 2021-11-12 12:17:34,803 | MainProcess |     [Client]: ''
+DEBUG | 2021-11-12 12:17:34,803 | MainProcess |     [Server]: 'dir#17'
+DEBUG | 2021-11-12 12:17:34,803 | MainProcess |     [Server]: 'dir: the files in specified dir'
+WARNING | 2021-11-12 12:17:41,061 | MainProcess |     Lost connection with client.
+INFO | 2021-11-12 12:17:41,061 | MainProcess |     Client Disconnected.
+WARNING | 2021-11-12 12:17:41,061 | MainProcess |        Socket error: [WinError 10022] An invalid argument was supplied
+WARNING | 2021-11-12 12:18:48,750 | MainProcess |        Socket error: [WinError 10038] An operation was attempted on something that is not a socket
+INFO | 2021-11-12 12:23:17,660 | MainProcess |     Server is up and waiting for client.
+INFO | 2021-11-12 12:23:19,929 | MainProcess |     Client connected. IP: ('127.0.0.1', 60734)
+WARNING | 2021-11-12 12:23:24,595 | MainProcess |     Lost connection with client.
+INFO | 2021-11-12 12:23:24,596 | MainProcess |     Client Disconnected.
+INFO | 2021-11-12 12:23:24,596 | MainProcess |     Server is up and waiting for client.
+INFO | 2021-11-12 12:23:29,755 | MainProcess |     Client connected. IP: ('127.0.0.1', 60737)
+DEBUG | 2021-11-12 12:23:32,799 | MainProcess |     [Client]: 'dir             #0               '
+DEBUG | 2021-11-12 12:23:32,799 | MainProcess |     [Client]: ''
+DEBUG | 2021-11-12 12:23:32,799 | MainProcess |     [Server]: 'dir#17'
+DEBUG | 2021-11-12 12:23:32,799 | MainProcess |     [Server]: 'dir: the files in specified dir'
+WARNING | 2021-11-12 12:23:37,422 | MainProcess |     Lost connection with client.
+INFO | 2021-11-12 12:23:37,423 | MainProcess |     Client Disconnected.
+INFO | 2021-11-12 12:23:37,423 | MainProcess |     Server is up and waiting for client.
+INFO | 2021-12-24 22:50:20,459 | MainProcess |     Server is up and waiting for client.
+INFO | 2021-12-24 22:50:22,744 | MainProcess |     Client connected. IP: ('127.0.0.1', 50125)
+DEBUG | 2021-12-24 22:50:31,971 | MainProcess |     [Client]: 'take_screenshot #0               '
+DEBUG | 2021-12-24 22:50:31,971 | MainProcess |     [Client]: ''
+DEBUG | 2021-12-24 22:50:32,005 | MainProcess |     [Server]: 'take_screenshot#16'
+DEBUG | 2021-12-24 22:50:32,005 | MainProcess |     [Server]: 'take_screenshot: Screenshot taken'
+DEBUG | 2021-12-24 22:50:39,371 | MainProcess |     [Client]: 'send_photo      #0               '
+DEBUG | 2021-12-24 22:50:39,371 | MainProcess |     [Client]: ''
+DEBUG | 2021-12-24 22:50:39,382 | MainProcess |     [Server]: 'send_photo#85525'
+DEBUG | 2021-12-24 22:50:39,382 | MainProcess |     [Server]: 'send_photo: photo bytes'
+DEBUG | 2021-12-24 22:50:50,163 | MainProcess |     [Client]: 'exit            #0               '
+DEBUG | 2021-12-24 22:50:50,163 | MainProcess |     [Client]: ''
+DEBUG | 2021-12-24 22:50:50,163 | MainProcess |     [Server]: 'exit#20'
+DEBUG | 2021-12-24 22:50:50,163 | MainProcess |     [Server]: 'exit: Ending connection...'
+INFO | 2021-12-24 22:50:50,164 | MainProcess |     Client Disconnected.
+INFO | 2021-12-24 22:50:50,164 | MainProcess |     Server is up and waiting for client.

@@ -1,0 +1,7 @@
+second version of the project with 2 sockets to the client,
+one for the thread that calls the sync function all the time and the second for all the other communications with the server
+
+
+**** FIXED ****
+file count was for each chat of each user and if two users were sending a file to the same user it would list them both as 0.end_of_file,
+now all the files are starting with the name of the chat that they belong to so insted of 0.end_of_file it will be chatname_0.end_of_file.

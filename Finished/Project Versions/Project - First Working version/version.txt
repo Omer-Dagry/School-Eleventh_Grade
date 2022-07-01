@@ -1,0 +1,2 @@
+first version of the project with 2 sockets to the client,
+one for the thread that calls the sync function all the time and the second for all the other communications with the server

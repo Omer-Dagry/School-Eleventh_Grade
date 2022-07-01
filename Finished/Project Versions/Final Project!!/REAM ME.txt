@@ -1,0 +1,7 @@
+1) Install K-Lite_Codec_Pack_1700_Basic.exe (included in this zip file), this is to play audio files
+2) in cmd:
+	a) pip install tkinter
+	b) pip install Pillow
+	c) pip install playsound==1.2.2
+
+	** site-packages folder is included in this zip file in case something doesn't work well **

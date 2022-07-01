@@ -1,0 +1,55 @@
+note over Client,Server:Protocol:\n\nWithout Files:\n\n                                            *** Part 1 ***\nsends data len with padding and username with padding, FOR EXAMPLE:\nif the len is 82 and the username is 'Omer' it will send '290             ############Omer'\n                                            *** Part 2 ***\nafter this it sends the data with separation between fields & fields description & number of fields & cmd but every\nchar of the message is converted to ascii value because if the message is in hebrew it doesn't work well if you just\nsend it like that. EXAMPLE:\nthis msg: "send_msg#@?#3#@?#user_name#@?#chat_with#@?#msg#@?#the username#@?#Someone#@?#hello" will be converted to\n"115,101,110,100,95,109,115,103,35,64,63,35,51,35,64,63,35,117,115,101,114,95,110,97,109,101,35,64,63,35,99,104,97,116,"\n"95,119,105,116,104,35,64,63,35,109,115,103,35,64,63,35,116,104,101,32,117,115,101,114,110,97,109,101,35,64,63,35,83,"\n"111,109,101,111,110,101,35,64,63,35,104,101,108,108,111,"\n\n\n\nWith Files:\n\nevery thing is the same, except there will be a field that says the length of the file as well as some other fields.\nand the file will be added at the end of the message\nEXAMPLE:\nupload_file#@?#4#@?#user_name#@?#other_username#@?#file_size#@?#filename.?#@?#     המשך שורה הבאה\nthe username#@?#someone#@?#size of file#@?#the type of file(.exe .txt ...)#@?#the file it self\nand this will be converted to the ascii value as well, except from the file itself.
+
+note over Client,Server:Without Files
+Client->Server:"len_msg.ljust(16) + user_name.rjust(16, '#')"
+Client->Server:"cmd#@?#number_of_fields#@?#field#@?#data_of_field"\n\nConverted To Ascii Values
+Server->Client:"len_msg.ljust(16) + user_name.rjust(16, '#')"
+Server->Client:"number_of_fields#@?#field#@?#data_of_field"\n\nConverted To Ascii Values
+
+note over Client,Server:With Files\n\n(when the client sends files the server doesn't replay with a file, the server sends files only in the sync procces)
+Client->Server:"len_msg.ljust(16) + user_name.rjust(16, '#')"
+Client->Server:"cmd#@?#number_of_fields#@?#field#@?#data_of_field#@?#the file it self"\n                             (one of the fields will be the file len)\n\nConverted To Ascii Values
+Server->Client:"len(data_to_send)).ljust(16) + user_name.rjust(16, '#')"
+Server->Client:"number_of_fields#@?#field#@?#data_of_field"\n\nConverted To Ascii Values
+
+note over Client,Server:Sync\n\n(first sync sends all the data of the user, the other syncs send only the new data since the last sync)
+Client->Server:"len_msg.ljust(16) + user_name.rjust(16, '#')"
+Client->Server:"sync#@?#number_of_fields#@?#user_name#@?#first_time#@?#the user name#@?#True or False"
+Server->Client:"number_of_files.ljust(16) + file_name.ljust(16) + file_len.ljust(16) + file_data"
+
+note over Client,Server:Example For Login
+Client->Server:"166             ############Omer"
+Client->Server:"login#@?#2#@?#user_name#@?#password#@?#Omer#@?#1"\n\nConverted To Ascii Values
+Server->Client:"306              ############Omer"
+Server->Client:"3#@?#login_status#@?#user_name#@?#status_data#@?#True#@?#Omer#@?#Logged In Successfully"\n\nConverted To Ascii Values
+
+note over Client,Server:Example For First Sync\n\n(first sync sends all the data of the user, the other syncs send only the new data since the last sync)
+Client->Server:"181             ############Omer"
+Client->Server:"sync#@?#2#@?#user_name#@?#first_time#@?#Omer#@?#True"
+Server->Client:"2               Omer2.txt                               41              connected_users.txt                     0               Omer2: #@?!?##*#@?!#Omer2: hdfghdfgh#@?!#"
+
+note over Client,Server:Example For Signup
+Client->Server:"170             ############Omer"
+Client->Server:"signup#@?#2#@?#user_name#@?#password#@?#Omer#@?#1"\n\nConverted To Ascii Values
+Server->Client:"310             ############Omer"
+Server->Client:"3#@?#signup_status#@?#user_name#@?#status_data#@?#True#@?#Omer#@?#Signed Up Successfully"\n\nConverted To Ascii Values
+
+note over Client,Server:Example For Starting A New Chat
+Client->Server:"181             ############Omer"
+Client->Server:"chat_with#@?#2#@?#user_name#@?#chat_with#@?#Omer#@?#L"\n\nConverted To Ascii Values
+Server->Client:"105             ############Omer"
+Server->Client:"2#@?#can_chat#@?#msg#@?#True#@?#"\n\nConverted To Ascii Values
+
+note over Client,Server:Example For User Read Message (every time the user syncs it also sends this)\n\n(server doesn't respond)
+Client->Server:"184             ############Omer"
+Client->Server:"read#@?#2#@?#user_name#@?#other_username#@?#Omer#@?#L"\n\nConverted To Ascii Values
+
+note over Client,Server:Example For Send Message
+Client->Server:"235             ############Omer"
+Client->Server:"send_msg#@?#3#@?#user_name#@?#chat_with#@?#msg#@?#Omer#@?#L#@?#hello"\n\nConverted To Ascii Values
+Server->Client:"50              ############Omer"
+Server->Client:"1#@?#ok#@?#True"\n\nConverted To Ascii Values
+
+note over Client,Server:Example For Upload File\n\n(server doesn't respond)
+Client->Server:"360             ############Omer"
+Client->Server:"upload_file#@?#4#@?#user_name#@?#other_username#@?#file_size#@?#filename.?#@?#Omer#@?#L#@?#21610#@?#.ico" + the file it self\n\nConverted To Ascii Values (except from the file)
