@@ -1,2 +1,2 @@
 # School-Eleventh_Grade
-Contains all the projects from the eleventh grade
+Contains all the projects and material from the eleventh grade
