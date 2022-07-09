@@ -30,6 +30,7 @@ and this will be converted to the ascii value as well, except from the file itse
 
 # ** site-packages folder is included in this zip file in case something doesn't work well **
 import logging
+import sys
 import multiprocessing
 import os
 import pyaudio
@@ -99,7 +100,7 @@ class MainWindow:
         self.root = Tk()
         # Configure Window
         self.root.title("Chats - " + window_name)  # title of window
-        self.root.iconbitmap("chats.ico")  # icon of window
+        self.root.iconbitmap(resource_path("chats.ico"))  # icon of window
         self.root.config(bg="#050c29")  # background color of window
         self.root.minsize(min_size[0], min_size[1])  # minimum size of window
         if max_size is not None:
@@ -666,6 +667,15 @@ class ChatWindow:
     def scroll(self):
         """ changes the view """
         self.txt.yview_scroll(0.1, "pixels")
+
+
+def resource_path(relative_path):
+    """ return the path to a resource """
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 
 def mouse_wheel_texts(event):
@@ -1834,17 +1844,17 @@ def gui():
     msg_box.bind('<KeyPress>', enter_key)
     main_window.add_widget(msg_box.get_entry(), row=19, column=2, sticky='news')
     # Create a button to record audio
-    photo = PhotoImage(file="microphone.png")
+    photo = PhotoImage(file=resource_path("microphone.png"))
     record_button = Buttonn(root, image=photo, command=record_, bg="#202021", h=68, w=140, fg="#63C8D8")
     record_button.change_text("Record")
     main_window.add_widget(record_button.get_button(), row=19, column=3, sticky='news')
     # Create a button to submit the input from the input box
-    photo2 = PhotoImage(file="send.png")
+    photo2 = PhotoImage(file=resource_path("send.png"))
     send_msg = Buttonn(root, image=photo2, w=40, h=3, borderwidth=3, bg="#202021", fg="white", font=None,
                        command=lambda: send_message(current_chat.get_label_text(), msg_box.get_entry()))
     main_window.add_widget(send_msg.get_button(), row=19, column=0, sticky='news')
     # Create a button to upload files
-    photo3 = PhotoImage(file="doc.png")
+    photo3 = PhotoImage(file=resource_path("doc.png"))
     file_upload = Buttonn(root, image=photo3, bg="#202021",
                           command=lambda: upload_file__(current_chat.get_label_text()), h=1, w=1)
     main_window.add_widget(file_upload.get_button(), row=19, column=1, sticky='news')
