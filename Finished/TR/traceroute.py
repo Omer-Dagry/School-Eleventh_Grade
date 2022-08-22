@@ -2,6 +2,7 @@ from math import ceil
 import scapy.all as scapy
 from scapy.layers.dns import DNS, DNSQR
 from scapy.layers.inet import IP, ICMP, UDP
+# cryptography==36.0.2
 
 
 def nslookup(hostname):
@@ -31,10 +32,15 @@ def main():
     while not stop:
         # send ping to hostname with ttl
         packet = IP(dst=hostname, ttl=ttl) / ICMP()
-        replay = scapy.sr1(packet, verbose=0)
-        r_time = float("%.5f" % (replay.time - packet.sent_time))  # response time
-        r_addr = replay[IP].src  # response ip address
-        if ICMP in replay and IP in replay and replay[ICMP].type == 0:  # if response is from hostname
+        replay = scapy.sr1(packet, verbose=0, timeout=3)
+        if replay is not None:
+            r_time = float("%.5f" % (replay.time - packet.sent_time))  # response time
+            r_addr = replay[IP].src  # response ip address
+        else:
+            r_time = "*"
+            r_addr = "Request timed out."
+        # if response is from hostname
+        if replay is not None and ICMP in replay and IP in replay and replay[ICMP].type == 0:
             print()
             print(" " * (6 - ceil(len(str(ttl)) / 2)) + str(ttl) + " " * (6 - (len(str(ttl)) // 2)) + "|" +
                   " " * (10 - ceil(len(str(r_time)) / 2)) + str(r_time) + " " * (10 - (len(str(r_time)) // 2)) + "|" +
