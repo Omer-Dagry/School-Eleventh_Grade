@@ -1,7 +1,7 @@
 import sys
 
 
-def encrypt(key, data):
+def encrypt(data, key):
     encrypted_data = ""
     for char in data:
         encrypted_data += chr((ord(char) - 97 + int(key)) % 26 + 97)

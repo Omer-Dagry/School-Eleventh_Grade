@@ -14,11 +14,11 @@ def nslookup(hostname):
         for answer in range(0, response.ancount):  # goes through all the answers until found dns response
             if answers[answer].type == dns_req.qtype:
                 print("Target IP Address: '%s'" % answers[answer].rdata)
-                return
+                return answers[answer].rdata
+    return None
 
 
-def main():
-    hostname = input("Traceroute To: ")
+def traceroute(hostname):
     # if hostname isn't an ip address it will try to get the ip address of hostname and print it
     if not (hostname.count(".") == 3 and
             [0 <= int(value) <= 255 for value in hostname.split(".")] == [True for i in range(4)]):
@@ -50,12 +50,17 @@ def main():
             #       + " ms | address", replay[IP].src + "\nTrace Complete.")
             stop = True
         else:
-            print(" " * (6 - ceil(len(str(ttl))/2)) + str(ttl) + " " * (6 - (len(str(ttl))//2)) + "|" +
-                  " " * (10 - ceil(len(str(r_time))/2)) + str(r_time) + " " * (10 - (len(str(r_time))//2)) + "|" +
-                  " " * (9 - ceil(len(str(r_addr))/2)) + str(r_addr) + " " * (9 - (len(str(r_addr))//2)) + "|")
+            print(" " * (6 - ceil(len(str(ttl)) / 2)) + str(ttl) + " " * (6 - (len(str(ttl)) // 2)) + "|" +
+                  " " * (10 - ceil(len(str(r_time)) / 2)) + str(r_time) + " " * (10 - (len(str(r_time)) // 2)) + "|" +
+                  " " * (9 - ceil(len(str(r_addr)) / 2)) + str(r_addr) + " " * (9 - (len(str(r_addr)) // 2)) + "|")
             # print(str(ttl - 1) + ") response time {:.2f}".format(replay.time - packet.sent_time)
             #       + " ms | address", replay[IP].src)
             ttl += 1
+
+
+def main():
+    hostname = input("Traceroute To: ")
+    traceroute(hostname)
 
 
 if __name__ == "__main__":
