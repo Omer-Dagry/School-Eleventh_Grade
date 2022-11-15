@@ -4,16 +4,19 @@ import sys
 def encrypt(data, key):
     encrypted_data = ""
     for char in data:
-        encrypted_data += chr((ord(char) - 97 + int(key)) % 26 + 97)
+        if char in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ":
+            encrypted_data += chr((ord(char) - 97 + int(key)) % 26 + 97)
+        else:
+            encrypted_data += char
     return encrypted_data
 
 
 def decrypt(encrypted_data):
-    for key in range(0, 27):
+    for key in range(1, 26):
         data = ""
         for char in encrypted_data:
             if char in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ":
-                data += chr(ord(char) - key)
+                data += chr((ord(char) - 97 - int(key)) % 26 + 97)
             else:
                 data += char
         print(data)
@@ -23,7 +26,7 @@ def main():
     if sys.argv[1] == "1":
         key = input("please enter key(0 -26): ")
         data = input("please enter message")
-        print(encrypt(key, data))
+        print(encrypt(data, key))
     if sys.argv[1] == "2":
         encrypted_data = input("please enter encrypted data: ")
         decrypt(encrypted_data)

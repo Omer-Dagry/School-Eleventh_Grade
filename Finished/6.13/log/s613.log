@@ -39,3 +39,8 @@ INFO | 2022-02-12 22:14:24,298 | MainProcess | sniffed: l
 INFO | 2022-02-12 22:14:24,407 | MainProcess | sniffed: l
 INFO | 2022-02-12 22:14:24,516 | MainProcess | sniffed: i
 INFO | 2022-02-12 22:14:24,627 | MainProcess | sniffed: y
+INFO | 2022-10-15 22:23:07,423 | MainProcess | sniffed: 5
+INFO | 2022-10-15 22:23:37,559 | MainProcess | sniffed: 5
+WARNING | 2022-10-15 22:24:58,824 | MainProcess | Calling str(pkt) on Python 3 makes no sense!
+WARNING | 2022-10-15 22:24:58,827 | MainProcess | Calling str(pkt) on Python 3 makes no sense!
+WARNING | 2022-10-15 22:24:58,838 | MainProcess | more Calling str(pkt) on Python 3 makes no sense!
