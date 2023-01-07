@@ -189,9 +189,8 @@ def handle_client_request(resource, client_socket, data):
                 content_type = CONTENT_TYPE + FILE_TYPE["jpg"]
                 content_length = CONTENT_LENGTH + str(len(msg)) + "\r\n"
             file_name = WEB_ROOT + STRINGS["up"] + file_name + "." + file_type
-            photo = open(file_name, 'wb')
-            photo.write(data)
-            photo.close()
+            with open(file_name, 'wb') as photo:
+                photo.write(data)
             status_code = STATUS_CODES["ok"]
             http_response = (HTTP + status_code + content_type + content_length + "\r\n") + msg
             logging.debug("[Server]: " + http_response)
@@ -309,12 +308,9 @@ def handle_client(client_socket):
                     headers = header
                     break
             data_length = int(headers[16:])
-            while data_length > 0:
-                if client_data == "":
-                    client_data = client_socket.recv(1)
-                else:
-                    client_data += client_socket.recv(1)
-                data_length -= 1
+            client_data = b""
+            while len(client_data) < data_length:
+                client_data += client_socket.recv(data_length - len(client_data))
         logging.debug("[Client]: " + client_request + " client_data, can't log")
         if client_request != "":
             valid_http, resource = validate_http_request(client_request)
