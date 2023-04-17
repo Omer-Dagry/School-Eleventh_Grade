@@ -78,7 +78,7 @@ def not_found():
     return http_response
 
 
-def handle_client_request(resource, client_socket: socket.socket, data: bytes):
+def handle_client_request(resource, client_socket: EncryptedSocket, data: bytes):
     """
     Check the required resource, generate proper HTTP response and send
     to client
@@ -171,15 +171,18 @@ def handle_client_request(resource, client_socket: socket.socket, data: bytes):
         http_response = HTTP + status_code + content_type + content_length + "\r\n"
         http_response = http_response.encode() + data
     else:
-        uri = WEB_ROOT + resource if not resource.startswith(f"/{WEB_ROOT}") else resource[1:]
-        if os.path.isfile(uri):
-            file_type = uri.split('.')[-1]
-            http_header = CONTENT_TYPE
-            http_header += FILE_TYPE[file_type]
-            status_code = STATUS_CODES["ok"]
-            http_response = HTTP + status_code + http_header
+        if resource.endswith(".html"):
+            http_response = f"{HTTP}302 Found\r\nLocation: https://127.0.0.1{resource[:-5]}\r\n\r\n".encode()
         else:
-            http_response = not_found()
+            uri = WEB_ROOT + resource if not resource.startswith(f"/{WEB_ROOT}") else resource[1:]
+            uri = uri if os.path.isfile(uri) else uri + ".html" if os.path.isfile(uri + ".html") else ""
+            if os.path.isfile(uri):
+                file_type = uri.split('.')[-1]
+                http_header = CONTENT_TYPE + FILE_TYPE[file_type]
+                status_code = STATUS_CODES["ok"]
+                http_response = HTTP + status_code + http_header
+            else:
+                http_response = not_found()
     if status_code == STATUS_CODES["ok"] and uri != "":
         data = read_file(uri)
         content_length = CONTENT_LENGTH + str(os.path.getsize(uri)) + "\r\n"

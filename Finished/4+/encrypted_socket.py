@@ -77,7 +77,7 @@ class EncryptedSocket:
         ssl_socket, ip_port = self.__encrypted_sock.accept()
         return EncryptedSocket(ssl_socket=ssl_socket), ip_port
 
-    def send(self, data: bytearray | memoryview | bytes, flags: None | int = None) -> bool:
+    def send(self, data: bytearray | memoryview | bytes, flags: None | int = None) -> int:
         if self.__family == socket.AF_INET and self.__type == socket.SOCK_DGRAM:
             raise OSError("UDP socket can't use 'send_message', instead of 'sendto'")
         # check that encrypted socket isn't None
@@ -85,13 +85,11 @@ class EncryptedSocket:
             raise OSError(f"Please Call '{'bind' if self.__server_side else 'connect'}' before sending a message.")
         # add the length of the data unencrypted before the data itself
         flags = [] if flags is None else [flags]
-        while len(data) > 0:
-            try:
-                sent = self.__encrypted_sock.send(data, *flags)
-            except ssl.SSLEOFError:  # connection closed
-                return False
-            data = data[sent:]
-        return True
+        try:
+            sent = self.__encrypted_sock.send(data, *flags)
+        except ssl.SSLEOFError:  # connection closed
+            raise ConnectionError("Connection Closed.")
+        return sent
 
     def recv(self, buffsize: int, timeout: int | None = -1) -> bytes:
         if self.__family == socket.AF_INET and self.__type == socket.SOCK_DGRAM:
