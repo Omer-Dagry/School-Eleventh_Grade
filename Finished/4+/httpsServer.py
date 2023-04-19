@@ -18,6 +18,7 @@ from encrypted_socket import EncryptedSocket
 
 # Constants
 WEB_ROOT = "webroot"
+FRONT_PAGE_HTML = "index"  # WRITE WITH NO EXTENSION !!!
 HTTP = "HTTP/1.1 "
 STRINGS = {"up": "/uploads/", "400": "/imgs/400.png", "404": "/imgs/404.png", "403": "/imgs/403.png",
            "500": "/imgs/403.png"}
@@ -32,6 +33,7 @@ FILE_TYPE = {"html": "text/html;charset=utf-8\r\n", "jpg": "image/jpeg\r\n", "cs
 NUMBERS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 NOT_ALLOWED = [">", "<", ":", '"', "/", "\\", "|", "?", "*"]
 HTTP_TYPE = ["GET", "POST"]
+SERVER_ADDR = "https://127.0.0.1"
 IP = '0.0.0.0'
 PORT = 443
 SOCKET_TIMEOUT = 2
@@ -94,8 +96,8 @@ def handle_client_request(resource, client_socket: EncryptedSocket, data: bytes)
     # if data is not None:
     #     pass  # POST request
     if resource == "/":
-        resource = "/index.html"
-    if "calculate-next?num=" in resource:
+        http_response = f"{HTTP}{STATUS_CODES['moved']}Location: {SERVER_ADDR}/{FRONT_PAGE_HTML}\r\n\r\n".encode()
+    elif "calculate-next?num=" in resource:
         num = resource.split("calculate-next?num=")[-1]
         if num.isnumeric():
             num = str(int(num) + 1)
@@ -172,7 +174,7 @@ def handle_client_request(resource, client_socket: EncryptedSocket, data: bytes)
         http_response = http_response.encode() + data
     else:
         if resource.endswith(".html"):
-            http_response = f"{HTTP}302 Found\r\nLocation: https://127.0.0.1{resource[:-5]}\r\n\r\n".encode()
+            http_response = f"{HTTP}{STATUS_CODES['moved']}Location: {SERVER_ADDR}{resource[:-5]}\r\n\r\n".encode()
         else:
             uri = WEB_ROOT + resource if not resource.startswith(f"/{WEB_ROOT}") else resource[1:]
             uri = uri if os.path.isfile(uri) else uri + ".html" if os.path.isfile(uri + ".html") else ""
