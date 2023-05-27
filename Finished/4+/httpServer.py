@@ -217,20 +217,15 @@ def handle_client(client_socket: socket.socket, client_address: tuple[str, int])
     while not stop:
         client_request = ""
         client_data = None
-        while True:
+        while "\r\n\r\n" not in client_request:
             try:
                 data = client_socket.recv(1).decode()
                 client_request += data
-            except socket.timeout:
+            except (socket.timeout, ConnectionError, socket.error):
                 stop = True
                 break
             if data == "":
                 stop = True
-                break
-            if "\r\n\r\n" in client_request:
-                break
-            if client_request == "":
-                client_socket.close()
                 break
         if "POST" in client_request:
             headers = client_request.split("\r\n")
