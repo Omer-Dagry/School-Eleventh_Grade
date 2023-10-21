@@ -1,0 +1,2 @@
+GET /hypertext/WWW/TheProject.html HTTP/1.1
+host: info.cern.ch

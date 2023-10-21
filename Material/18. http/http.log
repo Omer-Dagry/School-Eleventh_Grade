@@ -1,0 +1,43 @@
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.impl.conn.DefaultClientConnection | Sending request: POST /MUG/MTNNGHandler HTTP/1.1
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.wire | >> "POST /MUG/MTNNGHandler HTTP/1.1[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.wire | >> "SOAPAction: ""[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.wire | >> "Content-Length: 1045[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.wire | >> "Content-Type: text/xml; charset=UTF-8[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.wire | >> "Host: 10.0.0.245:20003[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.wire | >> "Connection: Keep-Alive[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.wire | >> "User-Agent: Vasco-De USSD[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.wire | >> "[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.headers | >> POST /MUG/MTNNGHandler HTTP/1.1
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.headers | >> SOAPAction: ""
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.headers | >> Content-Length: 1045
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.headers | >> Content-Type: text/xml; charset=UTF-8
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.headers | >> Host: 10.0.0.245:20003
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.headers | >> Connection: Keep-Alive
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.headers | >> User-Agent: Vasco-De USSD
+DEBUG | 2016-12-22 08:52:33,671 | pool-1-thread-125 | org.apache.http.wire | >> "<?xml version="1.0" encoding="utf-8" ?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Header><ns1:NotifySOAPHeader xmlns:ns1="http://www.huawei.com.cn/schema/common/v2_1"><ns1:spId>2340110005941</ns1:spId><ns1:serviceId>234012000014627</ns1:serviceId><ns1:timeStamp>20161222085233</ns1:timeStamp><ns1:linkid>22095232079003915427</ns1:linkid><ns1:traceUniqueID>504021504841612220952329635003</ns1:traceUniqueID><ns1:OperatorID>23401</ns1:OperatorID></ns1:NotifySOAPHeader></soapenv:Header><soapenv:Body><ns2:notifyUssdReception xmlns:ns2="http://www.csapi.org/schema/parlayx/ussd/notification/v1_0/local"><ns2:msgType>0</ns2:msgType><ns2:senderCB>1970612278</ns2:senderCB><ns2:receiveCB>FFFFFFFF</ns2:receiveCB><ns2:ussdOpType>1</ns2:ussdOpType><ns2:msIsdn>2348138075679</ns2:msIsdn><ns2:serviceCode>291</ns2:serviceCode><ns2:codeScheme>68</ns2:codeScheme><ns2:ussdString>*291#</ns2:ussdString></ns2:notifyUssdReception></soapenv:Body></soapenv:Envelope>"
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.wire | << "HTTP/1.1 200 OK[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.wire | << "SOAPAction: [\r][\n]"
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.wire | << "Freeflow: FC[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.wire | << "charge: N[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.wire | << "Date: Thu, 22 Dec 2016 08:52:32 GMT[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.wire | << "Server: VascoDE/1.0[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.wire | << "Content-Length: 337[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.wire | << "Content-Type: text/xml[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.wire | << "Connection: Keep-Alive[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.wire | << "[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.impl.conn.DefaultClientConnection | Receiving response: HTTP/1.1 200 OK
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.headers | << HTTP/1.1 200 OK
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.headers | << SOAPAction: 
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.headers | << Freeflow: FC
+DEBUG | 2016-12-22 08:52:33,704 | pool-1-thread-125 | org.apache.http.headers | << charge: N
+DEBUG | 2016-12-22 08:52:33,705 | pool-1-thread-125 | org.apache.http.headers | << Date: Thu, 22 Dec 2016 08:52:32 GMT
+DEBUG | 2016-12-22 08:52:33,705 | pool-1-thread-125 | org.apache.http.headers | << Server: VascoDE/1.0
+DEBUG | 2016-12-22 08:52:33,705 | pool-1-thread-125 | org.apache.http.headers | << Content-Length: 337
+DEBUG | 2016-12-22 08:52:33,705 | pool-1-thread-125 | org.apache.http.headers | << Content-Type: text/xml
+DEBUG | 2016-12-22 08:52:33,705 | pool-1-thread-125 | org.apache.http.headers | << Connection: Keep-Alive
+DEBUG | 2016-12-22 08:52:33,705 | pool-1-thread-125 | org.apache.http.impl.client.DefaultHttpClient | Connection can be kept alive indefinitely
+DEBUG | 2016-12-22 08:52:33,705 | pool-1-thread-125 | com.vascode.esb.util.http.HttpUtils | entity content type is  text/xml
+DEBUG | 2016-12-22 08:52:33,705 | pool-1-thread-125 | org.apache.http.wire | << "<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:loc="http://www.csapi.org/schema/parlayx/ussd/notification/v1_0/local"> <soapenv:Header/> <soapenv:Body> <loc:notifyUssdReceptionResponse>Please select language:[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,705 | pool-1-thread-125 | org.apache.http.wire | << "1 English[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,705 | pool-1-thread-125 | org.apache.http.wire | << "2 Swahili[\r][\n]"
+DEBUG | 2016-12-22 08:52:33,705 | pool-1-thread-125 | org.apache.http.wire | << "</loc:notifyUssdReceptionResponse> </soapenv:Body> </soapenv:Envelope>"
